@@ -11,7 +11,11 @@ app.get('/', function(req,res) {
 });
 
 app.get('/getreq', function (req, res) {
-    res.json(requests.shift())
+    let request = requests.shift();
+    if(request)
+      res.json(requests.shift())
+    else
+      res.status(404).send();
 });
 
 app.post('/webhook', function (req, res) {
