@@ -3,7 +3,8 @@ var app = express();
 app.use(express.json());
 
 var requests = [];
-var VERIFY_TOKEN = 'nodeapp';
+const VERIFY_TOKEN = 'nodeapp';
+const PORT = process.env.PORT || 5000
 
 app.get('/', function(req,res) {
     res.send("<h1>Mac's Heroku App</h1>");
@@ -38,6 +39,6 @@ app.get("/webhook", (req, res) => {
     }
   });
 
-app.listen(3000, function () {
+app.listen(PORT, function () {
   console.log('Echo app listening on port 3000!');
 });
