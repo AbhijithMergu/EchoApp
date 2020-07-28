@@ -5,10 +5,13 @@ app.use(express.json());
 var requests = [];
 var VERIFY_TOKEN = 'nodeapp';
 
+app.get('/', function(req,res) {
+    res.send("<h1>Mac's Heroku App</h1>");
+});
+
 app.get('/getreq', function (req, res) {
     res.json(requests.shift())
 });
-
 
 app.post('/webhook', function (req, res) {
     let request = {};
