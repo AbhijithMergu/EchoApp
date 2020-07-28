@@ -4,7 +4,8 @@
   "description": "A proxy app to enqueue incoming webhook requests, and echo them back to a listener which polls on this app. This accomodates routing requests to local server, without making it public",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "author": "abhijith.mergu",
   "license": "ISC",
