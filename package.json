@@ -1,0 +1,14 @@
+{
+  "name": "echoapp",
+  "version": "1.0.0",
+  "description": "A proxy app to enqueue incoming webhook requests, and echo them back to a listener which polls on this app. This accomodates routing requests to local server, without making it public",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "abhijith.mergu",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
