@@ -13,7 +13,7 @@ app.get('/', function(req,res) {
 app.get('/getreq', function (req, res) {
     let request = requests.shift();
     if(request)
-      res.json(requests.shift())
+      res.json(request)
     else
       res.status(404).send();
 });
