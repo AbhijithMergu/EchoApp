@@ -10,6 +10,15 @@ app.get('/', function(req,res) {
     res.send("<h1>Mac's Heroku App</h1>");
 });
 
+app.get('/sharepoint_webhook', function(req, res){
+  if (req.query && req.query.validationToken) {
+    res.send(escape(req.query.validationToken));
+    // Send a status of 'Ok'
+    status = 200;
+  }
+  res.status(status).end(http.STATUS_CODES[status]);
+});
+
 app.get('/getreq', function (req, res) {
     let request = requests.shift();
     if(request)
