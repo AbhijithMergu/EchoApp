@@ -1,5 +1,5 @@
 var express = require('express');
-import escape from 'escape-html';
+var escape = require('escape-html');
 
 var app = express();
 app.use(express.json());
