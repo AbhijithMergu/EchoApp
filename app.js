@@ -10,7 +10,7 @@ app.get('/', function(req,res) {
     res.send("<h1>Mac's Heroku App</h1>");
 });
 
-app.get('/sharepoint_webhook', function(req, res){
+app.post('/sharepoint_webhook', function(req, res){
   if (req.query && req.query.validationToken) {
     res.send(escape(req.query.validationToken));
     // Send a status of 'Ok'
