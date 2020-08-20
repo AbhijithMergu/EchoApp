@@ -1,5 +1,6 @@
 var express = require('express');
 var escape = require('escape-html');
+var bodyParser = require('body-parser')
 
 var app = express();
 app.use(express.json());
@@ -32,18 +33,36 @@ app.get('/:user/getreq', function (req, res) {
       res.status(404).send();
 });
 
-app.post('/:user/webhook', function (req, res) {
+var jsonParser = bodyParser.json()
+
+// create application/x-www-form-urlencoded parser
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
+app.post('/:user/webhook', jsonParser, function (req, res) {
     let user = req.params.user;
     let request = {};
     request.headers = req.headers;
     request.body = req.body;
-    request.params = req.query;
+    request.params = req.query; 
     if(requests.hasOwnProperty(user)){
       requests[user].push(request);
       res.status(200).send();
     } else {
       res.status(401).send();
     }
+});
+
+app.post('/:user/whatsapp/webhook', urlencodedParser, function (req, res) {
+  let user = req.params.user;
+  let request = {};
+  request.headers = req.headers;
+  request.body = req.body;
+  if(requests.hasOwnProperty(user)){
+    requests[user].push(request);
+    res.status(200).send();
+  } else {
+    res.status(401).send();
+  }
 });
 
 app.get("/:user/webhook", (req, res) => {
