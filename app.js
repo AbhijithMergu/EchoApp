@@ -37,6 +37,7 @@ app.post('/:user/webhook', function (req, res) {
     let request = {};
     request.headers = req.headers;
     request.body = req.body;
+    request.params = req.params;
     if(requests.hasOwnProperty(user)){
       requests[user].push(request);
       res.status(200).send();
