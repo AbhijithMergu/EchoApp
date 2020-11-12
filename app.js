@@ -52,6 +52,20 @@ app.post('/:user/webhook', jsonParser, function (req, res) {
     }
 });
 
+app.post('/:user/webhook/message', jsonParser, function (req, res) {
+  let user = req.params.user;
+  let request = {};
+  request.headers = req.headers;
+  request.body = req.body;
+  request.params = req.query; 
+  if(requests.hasOwnProperty(user)){
+    requests[user].push(request);
+    res.status(200).send();
+  } else {
+    res.status(401).send();
+  }
+});
+
 app.post('/:user/whatsapp/webhook', urlencodedParser, function (req, res) {
   let user = req.params.user;
   let request = {};
